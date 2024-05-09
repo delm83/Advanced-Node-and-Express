@@ -21,7 +21,9 @@ module.exports = function (app, myDataBase) {
   });
 
   app.route('/logout').get((req, res) => {
-    req.logout();
+    req.logout(err=>{
+      if (err) {return next(err);}
+    });
     res.redirect('/');
   });
 
